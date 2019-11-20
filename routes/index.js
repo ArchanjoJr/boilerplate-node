@@ -1,15 +1,13 @@
 const express = require('express');
-
+const { errorResponse, genericResponse } = require('../util')
 const api = express.Router();
 
 // INSERT HERE YOUR APP ROUTES AND ENDPOINTS
 api.get('/ping', (request, response) => {
   try {
-
-    console.log({ request })
-    return response.status(200).json({ message: 'pong' });
+    return genericResponse(200, 'TESTE', response)
   } catch (error) {
-    return response.status(500).json({ error: error.message });
+    return errorResponse(error, response)
   }
 });
 
