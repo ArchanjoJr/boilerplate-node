@@ -1,12 +1,9 @@
 #!/usr/bin/env nodemon
-const { getRoutes } = require('get-routes');
-const app = require('./app');
-const { port } = require('./configuration/config');
+const { app, routes } = require('./app');
+const { PORT } = require('./configuration');
+const { printRoutes } = require('./util');
 
-const r = getRoutes(app);
-
-app.listen(port, () => {
-  console.log(r);
-  console.log(`api rest em localhost: ${port}`);
+app.listen(PORT, () => {
+  printRoutes(`LOCALHOST:${PORT}`, routes);
 });
 module.exports = app;
